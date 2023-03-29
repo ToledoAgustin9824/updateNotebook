@@ -1,0 +1,211 @@
+selector { 
+ 	
+ 	propiedad:  valor;  /* SELECTOR = LO QUE VAMOS A MODIFICAR - PROPIEDAD = QUE PROPIEDAD USAMOS
+ 						   VALOR = VALOR DE LA PROPIEDAD */
+}
+
+/* selector universal (selecciona todos los elementos)= * */
+
+* { 
+
+    color: red;
+
+}
+
+/* TIPO DE SELECTORES : 
+
+	*UNIVERSAL = * 
+	*DE TIPO = POR EL NOMBRE DE ELEMENTOS (EJEMPL h1 , button , etc)
+	*CLASES = TIENE QUE TENER UN ATRIBUTO CLASE EN HTML EJ:  <h2 class="titulo-h2">;
+			  Y USO "titulo-h2" COMO NOMBRE DE MI SELECTOR CON UN PUNTO ANTES = .titulo-h2
+    *ID =  SE # Y SE PONE EL ID que tengamos en HTML en algun elemento ej: <h2 id="element">
+    	   SE USA ID para que sea un elemento único.(por problemas posteriores con JV script)
+    *POR ATRIBUTO = el atributo que elijamos en HTML y usamos corchetes para encerrar el nombre
+                    del atributo y su valor ej :  [atributo = " atributo " ] y despues abrimos llaves
+    *POR DESCENDENCIA = Se selecciona con un " . " seguido de los elementos de la linea de izq a der
+    				    ejemplo si mi linea es <h2><p> seria .h2 p y cambiara todos los que mantengan
+    				    este orden con clase tmb se puede hacer.
+    *POR SEUDO CLASE = son propiedades que van al final del selector utilizando " : " 
+    				   ejemplo = h2-class b : hover -> siendo hover la seudo clase. 
+
+    JERARQUIAS PARA SELECTORES = ESPECIFICIDAD
+
+    1) IMPORTANT!
+    2) estilos en linea
+    3) ID
+    4) CLASES - PSEUDO CLASES Y ATRIBUTOS
+    5  ELEMENTOS Y PSEUDO ELEMENTOS
+
+    ejemplo si pongo una linea de un color con important! al final y abajo pongo la misma linea por atributo
+    por mas que sea en cascada el estilo y siempre el ultimo quede seleccionado , al tener mas jerarquia
+    el color qeu va a tomar va ser el del selector que tenga el IMPORTANT!por que es el de mas clase jerarquica.
+	
+	ejemplo 
+
+	        h2{ 
+
+			   color: blue; !important  
+	        }
+
+			h2 { 
+				color: red; 
+
+
+			UNIDADES RELATIVAS Y FIJAS
+
+			unidades : 50px , 50cm , 50mm medidas fijas. (no sirven para responsive)
+			unidades relativas: rem , em. 
+			em : 1em = 16px(valor de padre) , si al contenedor padre le damos fot-size/padding/botton
+			:25px , ahora 1 em es = a 25px
+			view port widht o height ocupan todo lo largo de la pantalla y se abrevia con vw o vh.
+			porcentaje:se aplica en porcentaja de la caja contenedora que la contiene.
+
+			(TODA VALOR QUE SEA '0' NO SE COLOCA UNIDAD , SOLO EL NUMERO)
+
+			PROPIEDADES: 
+
+			font-size:  tamaño fuente
+			font-family: tipo fuente , puedo poner varias en una linea por si no tengo la primera
+						 separando con , ej: font-family: 'oswald' , sans series;
+			line-height: distancia desde el centro de la letra hacia arriba y hacia abajo.
+			font-weight: grosor de casa letra
+
+			NORMALIZE 
+
+			archivo .css que me permite normalizar propiedades para que sea igual en todos los 
+			navegadores en los que se abre la pagina
+
+			descargo normalize.css y guardo en carpeta de proyecto
+			abro el archivo y busco 
+
+			img {
+				border-style: none; 
+			c
+
+			y le agrego max-widht: 100%;
+
+			voy arriba de todo y coloco un selector * universal
+
+			* { 
+				border-sizing: border-box;
+				padding: 0;
+				margin: 0; //Ajusta automaticamente el tamñao de caja. 
+			 }
+
+			TEORÍA DE CAJAS
+
+			CAJAS EN LINEA : tienen la misma medida a lo ancho que la caja que los contiene
+			CAJAS EN BLOQUE: tienen la misma medida de ancho que lo ancho de la pagina;
+			
+			CUALQUIER ELEMENTO SE PUEDE CAMBIAR ENTRE EN LIEA Y EN BLOQUE
+
+			USANDO LA PROPIEDAD DISPLAY CAMBIO EL COMPORTAMIENTO DE LAS CAJAS
+			PARA QUE UN H2 QUE ES UN ELEMENTO EN BLOQUE , SEA COMPORTE COMO ELEMENTO EN LINEA.
+
+			ej.
+
+			h2 { 
+
+				display: inline;
+				
+			}
+
+			background-color : color de fondo
+
+			PADDING(PX) distancia entre los bordes de la caja y el texto (left,top,right,botton)
+
+			Podemos especificar cada uno y sus pixeles , pero si ponemos 
+
+			h2 { 
+					display: inline;
+					padding;20px (le damos a todos los lados 20px)
+					padding: 20px 30px 40px 20px;(top,right,bottom,left)ubicacion lineal en orden
+					text-align: center; nos centra el texto en la caja
+					margin:10px ; (distancia que separa esta caja de otra en todas las direcciones)
+					si contamos la caja de al lado que tmb tiene margin , sumamos los 2 y la separacion
+					es de 20px
+					border-radius: 2em; (redondea los bordes)
+					border: 10px solid blue;  (tamaño tipo color)
+
+					BOX MODEL:
+
+					content -->padding--->border-->margin (ordern de jerarquias)
+
+					box-shadow:  2px 4px 15px 0 black; (eje x, eje y, tam desenfoque ,border, color);
+					text-shadow: 2px 2px 7px black;(eje x ,eje y, tam desenfoque , color);
+
+
+				}
+                    
+
+            	POSICICIONAMIENTO DE CAJA 
+
+            	usamos la propiedad position: relative;
+
+            	dentro de la misma tenemos , top, left , buttom y right
+
+            	los comandos que usamos son TOP Y LEFT y si queremos moverlo en contra posicion
+            	solo ponemos valores negativos para realizar el movimiento contrario
+
+            	EJEMPLO 
+
+		        .caja1 { 
+					background-color: green;
+					position: relative;
+					top: 50px;
+					left: 50px;
+					right: 100px;  --> ni a right y a buttom le hace caso , solo se ajusta a 
+					buttom: -50px;     top y a left,(si ya estan definidos , si no si funcionan).
+
+		        }
+
+				
+				Z INDEX : propiedad que permite surponer cajas
+				por que cuando las nombramos en HTML tienen un orden de superioridad
+				
+				Para que Z INDEX FUNCIONA TIENE QUE TENER POSICIONADA LA CAJA ES DECIR
+				HABER PUESTO LA PROPIEDAD POSITION ANTES.
+
+				 .caja1 { 
+					background-color: green;
+					position: relative;
+					top: 50px;
+					left: 50px;
+					right: 100px;  --> ni a right y a buttom le hace caso , solo se ajusta a 
+					buttom: -50px;     top y a left,(si ya estan definidos , si no si funcionan).
+					z-index:10;
+
+		        }
+
+		         VALOR DEFAULT 0 , si le damos a una que esta por debajo Z-INDEX 1 , 
+					sobre pasa el valor de 0 y se superpone por encima
+
+					RECOMENDABLE IR DE 10 0 MAS POR CADA Z INDEX. para que nos permita meter cosas
+					en el medio. 
+
+					cuando hablamos de Contenedor e hijo , la unica forma que podemos hacer que el
+					hijo este por encima del padre es dandole un Z-INDEX NEGATIVO AL HIJO
+					Y No usando la propiedad Z-INDEX en el padre.
+
+					
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
